@@ -149,6 +149,18 @@
 (display "\n")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 2;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This second test case sorts a list of numbers in ascending
+; order.
+
+; Creates a binary search tree of the given list where for each
+; node the elements smaller than the node is placed on the left
+; subtree and the elements greater than the node on the right
+; subtree, and then sorts the list of numbers in descending
+; order
+(define t2 (mktree (lambda (x y) (< x y) ) (list 7 3 5 1 9 11)))
+(display "TEST CASE 1 RESULT: ")
+(in-order t2)
+(display "\n")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 3;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This third test case sorts a list of lists according to their
