@@ -144,9 +144,49 @@
 ; subtree, and then sorts the list of numbers in descending
 ; order
 (define t1 (mktree (lambda (x y) (> x y) ) (list 7 3 5 1 9 11)))
+(display "TEST CASE 1 RESULT: ")
 (in-order t1)
+(display "\n")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 2;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 3;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 
+; This third test case sorts a list of lists according to their
+; lengths in ascending order.
+
+; This procedure determines the length(i.e. number of elements)
+; of a given list.
+(define (length itemsList)
+  (if (null? itemsList)
+      0
+      (+ 1 (length (cdr itemsList))))
+  )
+
+; Predicate that defines the ordering for the values to be
+; inserted into the tree
+(define length_order
+  (lambda (l1 l2)
+    (< (length l1) (length l2))
+    )
+  )
+
+; Define a list of lists
+(define l1 (list 11 9 7 5 3 1))
+(define l2 (list 2 4 5))
+(define l3 (list 0 23 58 65 3))
+(define l4 (list 1 59 22 6 2 0 5 8))
+(define l5 (list 1 2))
+(define lol (list l1 l2 l3 l4 l5))
+
+; Create a binary search tree where for each node the
+; elements with length less than the length of the node
+; is placed on the left subtree and the elements with
+; length greater than the length of the node on the right
+; subtree.
+(define t3 (mktree length_order lol))
+
+; Sort the list of lists in increasing order of the length
+; of each element, by traversing through the tree in-order.
+(display "TEST CASE 3 RESULT: ")
+(in-order t3)
+(display "\n")
