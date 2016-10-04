@@ -190,3 +190,33 @@
 (display "TEST CASE 3 RESULT: ")
 (in-order t3)
 (display "\n")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 4;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This fourth test case sorts a list of Strings in lexicographical
+; ordering.
+
+; Predicate that defines the ordering for the values to be
+; inserted into the tree
+(define lex_order
+  (lambda (s1 s2)
+    (string<? s1 s2)))
+
+; Define a list of Strings
+(define s1 "household")
+(define s2 "house")
+(define s3 "Composer")
+(define s4 "composer")
+(define s5 "Hotel")
+(define s6 "H20")
+(define los (list s1 s2 s3 s4 s5 s6))
+
+(define t4 (mktree lex_order los))
+
+; Sort the list of Strings in lexicographical ordering by
+; traversing through the tree in-order.
+(display "TEST CASE 4 RESULT: ")
+(in-order t4)
+(display "\n")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 5;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; This fifth 
