@@ -119,3 +119,34 @@
                 (display " ")))
         )
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; The following code are a range of test cases to demonstrate ;
+; that the defined procedures above are operatingly correctly.;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; This procedure determines the length(i.e. number of elements)
+; of a given list.
+(define (length itemsList)
+  (if (null? itemsList)
+      0
+      (+ 1 (length (cdr itemsList))))
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASES;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 1;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Creates a binary search tree of the given list where for each
+; node the elements smaller than the node is placed on the left
+; subtree and the elements greater than the node on the right
+; subtree, and then sorts the list of numbers in descending
+; order
+(define t1 (mktree (lambda (x y) (> x y) ) (list 7 3 5 1 9 11)))
+(in-order t1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 2;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;TEST CASE 3;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 
