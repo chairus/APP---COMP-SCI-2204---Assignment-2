@@ -27,7 +27,7 @@
   )
 
 ; This procedure prints out the elements of a binary tree
-; in pre-order.
+; in pre-order in neat formatting.
 (define (print-tree tree)
   (cond ((null? tree) (display tree))
         ((if (or (not (null? (left-branch tree)))
