@@ -22,6 +22,7 @@
       )
   )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;PART 1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; This procedure accepts three arguments and returns a procedure
 ; that uses the passed arguments to generate a pseudo-random
@@ -30,6 +31,8 @@
   (lambda (a b m)
     (lambda (x)
       (modulo (+(* a x) b) m))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;PART 2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; This procedure is the same as the procedure above, however it
 ; returns a procedure that takes in a seed and generates a pseudo-
@@ -50,12 +53,14 @@
     (lambda (x)
       (modulo (+(* a x) b) m))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;PART 3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; This procedure is the same as the procedure above, however it
 ; returns a procedure that takes in a seed and generates a pseudo-
 ; random number(integer) that ranges from 0-10 inclusive(i.e. this
 ; random number generator has a range [0,10]).
 (define generator
-  (let ((m 11) (a 23624) (b 4512652))
+  (let ((a 23624) (b 4512652) (m 11))
     (lambda (x)
       (modulo (+(* a x) b) m)))) 
 
@@ -66,3 +71,15 @@
 
 (define randomnos
    (cons-stream (random 10) (stream-map generator randomnos)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;PART 4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define (addL x y)
+  (cons-stream (+ (head x) (head y))
+               (addL (tail x) (tail y))))
+
+; Constructs a stream of the partial sums of the random number
+; generator that generates pseudo-random numbers that has a range
+; of [0,10].
+(define psum
+  (cons-stream (head randomnos) (addL (tail randomnos) psum)))
